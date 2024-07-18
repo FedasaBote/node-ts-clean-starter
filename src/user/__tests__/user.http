@@ -1,0 +1,56 @@
+@baseUrl = http://127.0.0.1:3000/api
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0ZmE5YzMwZS0wZjFlLTRjZDctYjNjYi00YWQxYmYxNWVlNTgiLCJzY29wZSI6WyJFbXBsb3llZSJdLCJpYXQiOjE2NjM0MDYzNDl9.hus6mVYTTKyA2rGuKIWJxfKd5aPL2X_lKJi-h3bT3TI
+###
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "firstName": "test",
+    "lastName": "data25",
+    "phone": "985585425",
+    "email": "testdata25@test.com",
+    "password": "test@test",
+	"isTermAndConditionAgreed": true
+}
+
+###
+GET {{baseUrl}}/users/me
+Authorization: {{token}}
+
+### 
+GET {{baseUrl}}/users?page=2&limit=20
+Authorization: {{token}}
+
+###
+POST {{baseUrl}}/users/me/send-otp
+Content-Type: application/json
+
+{
+	"email": "testdata25@test.com"
+}
+
+###
+POST {{baseUrl}}/users/forget-password
+Content-Type: application/json
+
+{
+	"email": "janedoe@test.com"
+}
+###
+POST {{baseUrl}}/users/me/verify-email
+Content-Type: application/json
+
+{
+	"code": "168980",
+	"email": "testdata25@test.com"
+}
+
+###
+POST {{baseUrl}}/users/reset-password
+Content-Type: application/json
+
+{
+	"code": "747507",
+	"email": "janedoe@test.com",
+	"password": "test@test"
+}
